@@ -1,0 +1,33 @@
+stages:
+- CompileFramework
+- CompileSwiftPackage
+
+before_script:
+  - export LANG=en_US.UTF-8
+  - export PATH=/usr/bin:/bin:/usr/sbin:/sbin:$PATH
+  - export PATH=/usr/local/bin/:$PATH
+  - export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:/opt/homebrew/bin:$PATH
+
+CompileFramework:
+  tags:
+    - m1
+  only:
+    variables:
+    - $CI_PIPELINE_SOURCE == "web"
+  stage: CompileFramework
+  script:
+    - Resource/Automation/build.sh $(pwd)/.build/framework $(pwd)/libimobiledevice.xcframework
+  artifacts:
+    paths:
+      - libimobiledevice.xcframework
+
+CompileSwiftPackage:
+  tags:
+    - m1
+  only:
+    variables:
+    - $CI_PIPELINE_SOURCE == "web"
+    - $CI_COMMIT_REF_NAME == "main"
+  stage: CompileFramework
+  script:
+    - swift build
