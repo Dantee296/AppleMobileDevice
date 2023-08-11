@@ -186,4 +186,7 @@ for ((i=0; i<${#OUTPUT_HEADER_LIST[@]}; i++)); do
 done
 $COMMAND -output $OUTPUT_XCFRAMEWORK
 
+FRAMEWORK_HASH=$(sha256sum $OUTPUT_XCFRAMEWORK | awk '{print $1}')
+echo "[+] xcframework hash: $FRAMEWORK_HASH"
+
 echo "[+] well done!"
