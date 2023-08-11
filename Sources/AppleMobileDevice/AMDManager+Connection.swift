@@ -17,7 +17,11 @@ public extension AppleMobileDeviceManager {
         case any // -> usbPreferred
     }
 
-    func useDevice(udid: String, connection: ConnectionMethod = .any, task: (idevice_t?) -> Void) {
+    func requireDevice(
+        udid: String,
+        connection: ConnectionMethod = configuration.connectionMethod,
+        task: (idevice_t?) -> Void
+    ) {
         var device: idevice_t?
         var ret: idevice_error_t = .init(0)
         switch connection {
@@ -44,7 +48,12 @@ public extension AppleMobileDeviceManager {
         idevice_free(device)
     }
 
-    func useLockdownClient(device: idevice_t, name: String = UUID().uuidString, handshake: Bool = true, task: (lockdownd_client_t?) -> Void) {
+    func requireLockdownClient(
+        device: idevice_t,
+        name: String = UUID().uuidString,
+        handshake: Bool = true,
+        task: (lockdownd_client_t?) -> Void
+    ) {
         var client: lockdownd_client_t?
         if handshake {
             guard lockdownd_client_new_with_handshake(device, &client, name) == LOCKDOWN_E_SUCCESS else {
