@@ -1,6 +1,4 @@
-#if canImport(Foundation)
-    import Foundation
-#endif
+import Foundation
 
 /**
  A type-erased `Decodable` value.
