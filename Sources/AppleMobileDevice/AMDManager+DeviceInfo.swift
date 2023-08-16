@@ -29,89 +29,136 @@ public extension AppleMobileDeviceManager {
     }
 
     class DeviceRecord: CodableRecord {
-        public var activationState: String? { decode("ActivationState") }
-        public var activationStateAcknowledged: Bool? { decode("ActivationStateAcknowledged") }
-        public var basebandActivationTicketVersion: String? { decode("BasebandActivationTicketVersion") }
-        public var basebandCertId: Int? { decode("BasebandCertId") }
-        public var basebandChipID: Int? { decode("BasebandChipID") }
-        public var basebandMasterKeyHash: String? { decode("BasebandMasterKeyHash") }
-        public var basebandRegionSKU: Data? { decode("BasebandRegionSKU") }
-        public var basebandSerialNumber: Data? { decode("BasebandSerialNumber") }
-        public var basebandStatus: String? { decode("BasebandStatus") }
-        public var basebandVersion: String? { decode("BasebandVersion") }
-        public var bluetoothAddress: String? { decode("BluetoothAddress") }
-        public var boardId: Int? { decode("BoardId") }
-        public var bootSessionID: String? { decode("BootSessionID") }
-        public var brickState: Bool? { decode("BrickState") }
-        public var buildVersion: String? { decode("BuildVersion") }
-        public var cpuArchitecture: String? { decode("CPUArchitecture") }
-        public var certID: Int? { decode("CertID") }
-        public var chipID: Int? { decode("ChipID") }
-        public var chipSerialNo: Data? { decode("ChipSerialNo") }
-        public var deviceClass: String? { decode("DeviceClass") }
-        public var deviceColor: String? { decode("DeviceColor") }
-        public var deviceName: String? { decode("DeviceName") }
-        public var dieID: Int? { decode("DieID") }
-        public var ethernetAddress: String? { decode("EthernetAddress") }
-        public var firmwareVersion: String? { decode("FirmwareVersion") }
-        public var fusingStatus: Int? { decode("FusingStatus") }
-        public var gid1: String? { decode("GID1") }
-        public var gid2: String? { decode("GID2") }
-        public var hardwareModel: String? { decode("HardwareModel") }
-        public var hardwarePlatform: String? { decode("HardwarePlatform") }
-        public var hasSiDP: Bool? { decode("HasSiDP") }
-        public var humanReadableProductVersionString: String? { decode("HumanReadableProductVersionString") }
-        public var iTunesHasConnected: Bool? { decode("iTunesHasConnected") }
-        public var integratedCircuitCardIdentity2: String? { decode("IntegratedCircuitCardIdentity2") }
-        public var integratedCircuitCardIdentity: String? { decode("IntegratedCircuitCardIdentity") }
-        public var internationalMobileEquipmentIdentity2: String? { decode("InternationalMobileEquipmentIdentity2") }
-        public var internationalMobileEquipmentIdentity: String? { decode("InternationalMobileEquipmentIdentity") }
-        public var internationalMobileSubscriberIdentity2: String? { decode("InternationalMobileSubscriberIdentity2") }
-        public var internationalMobileSubscriberIdentity: String? { decode("InternationalMobileSubscriberIdentity") }
-        public var internationalMobileSubscriberIdentityOverride: Bool? { decode("InternationalMobileSubscriberIdentityOverride") }
-        public var kctPostponementInfoPRIVersion: String? { decode("kCTPostponementInfoPRIVersion") }
-        public var kctPostponementInfoPRLName: Int? { decode("kCTPostponementInfoPRLName") }
-        public var kctPostponementInfoServiceProvisioningState: Bool? { decode("kCTPostponementInfoServiceProvisioningState") }
-        public var kctPostponementStatus: String? { decode("kCTPostponementStatus") }
-        public var mlbSerialNumber: String? { decode("MLBSerialNumber") }
-        public var mobileSubscriberCountryCode: String? { decode("MobileSubscriberCountryCode") }
-        public var mobileSubscriberNetworkCode: String? { decode("MobileSubscriberNetworkCode") }
-        public var modelNumber: String? { decode("ModelNumber") }
-        public var priVersion_Major: Int? { decode("PRIVersion_Major") }
-        public var priVersion_Minor: Int? { decode("PRIVersion_Minor") }
-        public var priVersion_ReleaseNo: Int? { decode("PRIVersion_ReleaseNo") }
-        public var pairRecordProtectionClass: Int? { decode("PairRecordProtectionClass") }
-        public var partitionType: String? { decode("PartitionType") }
-        public var passwordProtected: Bool? { decode("PasswordProtected") }
-        public var phoneNumber: String? { decode("PhoneNumber") }
-        public var pkHash: Data? { decode("PkHash") }
-        public var productName: String? { decode("ProductName") }
-        public var productType: String? { decode("ProductType") }
-        public var productVersion: String? { decode("ProductVersion") }
-        public var productionSOC: Bool? { decode("ProductionSOC") }
-        public var protocolVersion: String? { decode("ProtocolVersion") }
-        public var proximitySensorCalibration: Data? { decode("ProximitySensorCalibration") }
-        public var regionInfo: String? { decode("RegionInfo") }
-        public var sim1IsEmbedded: Bool? { decode("SIM1IsEmbedded") }
-        public var sim2GID1: Data? { decode("SIM2GID1") }
-        public var sim2GID2: Data? { decode("SIM2GID2") }
-        public var sim2IsEmbedded: Bool? { decode("SIM2IsEmbedded") }
-        public var simGID1: Data? { decode("SIMGID1") }
-        public var simGID2: Data? { decode("SIMGID2") }
-        public var simStatus: String? { decode("SIMStatus") }
-        public var simTrayStatus: String? { decode("SIMTrayStatus") }
-        public var serialNumber: String? { decode("SerialNumber") }
-        public var softwareBehavior: Data? { decode("SoftwareBehavior") }
-        public var softwareBundleVersion: String? { decode("SoftwareBundleVersion") }
-        public var telephonyCapability: Bool? { decode("TelephonyCapability") }
-        public var timeIntervalSince1970: Double? { decode("TimeIntervalSince1970") }
-        public var timeZone: String? { decode("TimeZone") }
-        public var timeZoneOffsetFromUTC: Int? { decode("TimeZoneOffsetFromUTC") }
-        public var uniqueChipID: Int? { decode("UniqueChipID") }
-        public var uniqueDeviceID: String? { decode("UniqueDeviceID") }
-        public var useRaptorCerts: Bool? { decode("UseRaptorCerts") }
-        public var uses24HourClock: Bool? { decode("Uses24HourClock") }
-        public var wifiAddress: String? { decode("WiFiAddress") }
+        public var activationState: String? { valueFor("ActivationState") }
+        public var activationStateAcknowledged: Bool? { valueFor("ActivationStateAcknowledged") }
+        public var basebandActivationTicketVersion: String? { valueFor("BasebandActivationTicketVersion") }
+        public var basebandCertId: Int? { valueFor("BasebandCertId") }
+        public var basebandChipID: Int? { valueFor("BasebandChipID") }
+        public var basebandMasterKeyHash: String? { valueFor("BasebandMasterKeyHash") }
+        public var basebandRegionSKU: Data? { valueFor("BasebandRegionSKU") }
+        public var basebandSerialNumber: Data? { valueFor("BasebandSerialNumber") }
+        public var basebandStatus: String? { valueFor("BasebandStatus") }
+        public var basebandVersion: String? { valueFor("BasebandVersion") }
+        public var bluetoothAddress: String? { valueFor("BluetoothAddress") }
+        public var boardId: Int? { valueFor("BoardId") }
+        public var bootSessionID: String? { valueFor("BootSessionID") }
+        public var brickState: Bool? { valueFor("BrickState") }
+        public var buildVersion: String? { valueFor("BuildVersion") }
+        public var cpuArchitecture: String? { valueFor("CPUArchitecture") }
+        public var certID: Int? { valueFor("CertID") }
+        public var chipID: Int? { valueFor("ChipID") }
+        public var chipSerialNo: Data? { valueFor("ChipSerialNo") }
+        public var deviceClass: String? { valueFor("DeviceClass") }
+        public var deviceColor: String? { valueFor("DeviceColor") }
+        public var deviceName: String? { valueFor("DeviceName") }
+        public var dieID: Int? { valueFor("DieID") }
+        public var ethernetAddress: String? { valueFor("EthernetAddress") }
+        public var firmwareVersion: String? { valueFor("FirmwareVersion") }
+        public var fusingStatus: Int? { valueFor("FusingStatus") }
+        public var gid1: String? { valueFor("GID1") }
+        public var gid2: String? { valueFor("GID2") }
+        public var hardwareModel: String? { valueFor("HardwareModel") }
+        public var hardwarePlatform: String? { valueFor("HardwarePlatform") }
+        public var hasSiDP: Bool? { valueFor("HasSiDP") }
+        public var humanReadableProductVersionString: String? { valueFor("HumanReadableProductVersionString") }
+        public var iTunesHasConnected: Bool? { valueFor("iTunesHasConnected") }
+        public var integratedCircuitCardIdentity2: String? { valueFor("IntegratedCircuitCardIdentity2") }
+        public var integratedCircuitCardIdentity: String? { valueFor("IntegratedCircuitCardIdentity") }
+        public var internationalMobileEquipmentIdentity2: String? { valueFor("InternationalMobileEquipmentIdentity2") }
+        public var internationalMobileEquipmentIdentity: String? { valueFor("InternationalMobileEquipmentIdentity") }
+        public var internationalMobileSubscriberIdentity2: String? { valueFor("InternationalMobileSubscriberIdentity2") }
+        public var internationalMobileSubscriberIdentity: String? { valueFor("InternationalMobileSubscriberIdentity") }
+        public var internationalMobileSubscriberIdentityOverride: Bool? { valueFor("InternationalMobileSubscriberIdentityOverride") }
+        public var kCTPostponementInfoPRIVersion: String? { valueFor("kCTPostponementInfoPRIVersion") }
+        public var kCTPostponementInfoPRLName: Int? { valueFor("kCTPostponementInfoPRLName") }
+        public var kCTPostponementInfoServiceProvisioningState: Bool? { valueFor("kCTPostponementInfoServiceProvisioningState") }
+        public var kCTPostponementStatus: String? { valueFor("kCTPostponementStatus") }
+        public var mlbSerialNumber: String? { valueFor("MLBSerialNumber") }
+        public var mobileSubscriberCountryCode: String? { valueFor("MobileSubscriberCountryCode") }
+        public var mobileSubscriberNetworkCode: String? { valueFor("MobileSubscriberNetworkCode") }
+        public var modelNumber: String? { valueFor("ModelNumber") }
+        public var priVersion_Major: Int? { valueFor("PRIVersion_Major") }
+        public var priVersion_Minor: Int? { valueFor("PRIVersion_Minor") }
+        public var priVersion_ReleaseNo: Int? { valueFor("PRIVersion_ReleaseNo") }
+        public var pairRecordProtectionClass: Int? { valueFor("PairRecordProtectionClass") }
+        public var partitionType: String? { valueFor("PartitionType") }
+        public var passwordProtected: Bool? { valueFor("PasswordProtected") }
+        public var phoneNumber: String? { valueFor("PhoneNumber") }
+        public var pkHash: Data? { valueFor("PkHash") }
+        public var productName: String? { valueFor("ProductName") }
+        public var productType: String? { valueFor("ProductType") }
+        public var productVersion: String? { valueFor("ProductVersion") }
+        public var productionSOC: Bool? { valueFor("ProductionSOC") }
+        public var protocolVersion: String? { valueFor("ProtocolVersion") }
+        public var proximitySensorCalibration: Data? { valueFor("ProximitySensorCalibration") }
+        public var regionInfo: String? { valueFor("RegionInfo") }
+        public var sim1IsEmbedded: Bool? { valueFor("SIM1IsEmbedded") }
+        public var sim2GID1: Data? { valueFor("SIM2GID1") }
+        public var sim2GID2: Data? { valueFor("SIM2GID2") }
+        public var sim2IsEmbedded: Bool? { valueFor("SIM2IsEmbedded") }
+        public var simGID1: Data? { valueFor("SIMGID1") }
+        public var simGID2: Data? { valueFor("SIMGID2") }
+        public var simStatus: String? { valueFor("SIMStatus") }
+        public var simTrayStatus: String? { valueFor("SIMTrayStatus") }
+        public var serialNumber: String? { valueFor("SerialNumber") }
+        public var softwareBehavior: Data? { valueFor("SoftwareBehavior") }
+        public var softwareBundleVersion: String? { valueFor("SoftwareBundleVersion") }
+        public var telephonyCapability: Bool? { valueFor("TelephonyCapability") }
+        public var timeIntervalSince1970: Double? { valueFor("TimeIntervalSince1970") }
+        public var timeZone: String? { valueFor("TimeZone") }
+        public var timeZoneOffsetFromUTC: Int? { valueFor("TimeZoneOffsetFromUTC") }
+        public var uniqueChipID: Int? { valueFor("UniqueChipID") }
+        public var uniqueDeviceID: String? { valueFor("UniqueDeviceID") }
+        public var useRaptorCerts: Bool? { valueFor("UseRaptorCerts") }
+        public var uses24HourClock: Bool? { valueFor("Uses24HourClock") }
+        public var wifiAddress: String? { valueFor("WiFiAddress") }
+    }
+
+    class BatteryRecord: CodableRecord {
+        public var batteryCurrentCapacity: Int? { valueFor("BatteryCurrentCapacity") }
+        public var batteryIsCharging: Bool? { valueFor("BatteryIsCharging") }
+        public var externalChargeCapable: Bool? { valueFor("ExternalChargeCapable") }
+        public var externalConnected: Bool? { valueFor("ExternalConnected") }
+        public var fullyCharged: Bool? { valueFor("FullyCharged") }
+        public var gasGaugeCapability: Bool? { valueFor("GasGaugeCapability") }
+        public var hasBattery: Bool? { valueFor("HasBattery") }
+    }
+
+    internal func lockdownGetValue<T: Codable>(
+        client: lockdownd_client_t?,
+        domain: String? = nil,
+        key: String? = nil
+    ) -> T? {
+        guard let client else { return nil }
+        var plist: plist_t?
+        defer { if let plist { plist_free(plist) } }
+        lockdownd_get_value(client, domain, key, &plist)
+        guard let data = Utils.read_plist_to_binary_data(plist: plist),
+              let ret = try? PropertyListDecoder().decode(T.self, from: data)
+        else { return nil }
+        return ret
+    }
+
+    func readFromLockdown(
+        udid: String,
+        domain: String? = nil,
+        key: String? = nil,
+        connection: ConnectionMethod = configuration.connectionMethod
+    ) -> AnyCodable? {
+        var result: AnyCodable?
+        requireDevice(udid: udid, connection: connection) { device in
+            guard let device else { return }
+            requireLockdownClient(device: device, handshake: true) { client in
+                guard let client else { return }
+                result = lockdownGetValue(client: client, domain: domain, key: key)
+            }
+            if result != nil { return }
+            requireLockdownClient(device: device, handshake: false) { client in
+                guard let client else { return }
+                result = lockdownGetValue(client: client, domain: domain, key: key)
+            }
+        }
+        return result
     }
 
     func obtainDeviceInfo(
@@ -120,29 +167,51 @@ public extension AppleMobileDeviceManager {
         key: String? = nil,
         connection: ConnectionMethod = configuration.connectionMethod
     ) -> DeviceRecord? {
-        var result: AnyCodable?
+        guard let dic = readFromLockdown(udid: udid, domain: domain, key: key, connection: connection) else {
+            return nil
+        }
+        return .init(store: dic)
+    }
+
+    func obtainDeviceBatteryInfo(
+        udid: String,
+        connection: ConnectionMethod = configuration.connectionMethod
+    ) -> BatteryRecord? {
+        guard let dic = readFromLockdown(udid: udid, domain: "com.apple.mobile.battery", key: nil, connection: connection) else {
+            return nil
+        }
+        return .init(store: dic)
+    }
+
+    func obtainDeviceScreenshot(
+        udid: String,
+        connection: ConnectionMethod = configuration.connectionMethod
+    ) -> Data? {
+        var result: Data?
         requireDevice(udid: udid, connection: connection) { device in
             guard let device else { return }
-            requireLockdownClient(device: device) { client in
+            requireLockdownClient(device: device, handshake: true) { client in
                 guard let client else { return }
-                var plist: plist_t?
-                lockdownd_get_value(client, domain, key, &plist)
-                if let plist {
-                    var buf: UnsafeMutablePointer<CChar>?
-                    var len: UInt32 = 0
-                    let error = plist_to_bin(plist, &buf, &len)
-                    if error == PLIST_ERR_SUCCESS, let buf, len > 0 {
-                        let data = Data(bytes: buf, count: Int(len))
-                        if let ret = try? PropertyListDecoder().decode(AnyCodable.self, from: data) {
-                            result = ret
-                        }
+                requireLockdownService(client: client, serviceName: "com.apple.mobile.screenshotr") { service in
+                    guard let service else { return }
+                    var screenshotr_client: screenshotr_client_t?
+                    guard screenshotr_client_new(device, service, &screenshotr_client) == SCREENSHOTR_E_SUCCESS,
+                          let screenshotr_client
+                    else {
+                        return
                     }
-                    free(buf)
-                    plist_free(plist)
+                    defer { screenshotr_client_free(screenshotr_client) }
+
+                    var buf: UnsafeMutablePointer<CChar>?
+                    defer { if let buf { free(buf) } }
+                    var len: UInt64 = 0
+                    screenshotr_take_screenshot(screenshotr_client, &buf, &len)
+
+                    guard let buf, len > 0 else { return }
+                    result = Data(bytes: buf, count: Int(len))
                 }
             }
         }
-        guard let result else { return nil }
-        return .init(store: result)
+        return result
     }
 }

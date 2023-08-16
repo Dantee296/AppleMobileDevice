@@ -29,7 +29,31 @@ public class AppleMobileDeviceManager {
 
         var dictionary: [String: Any] { store.value as? [String: Any] ?? [:] }
 
-        func decode<T: Codable>(_ key: String) -> T? {
+        public var plistData: Data? {
+            guard !dictionary.keys.isEmpty,
+                  let data = try? PropertyListEncoder().encode(AnyCodable(dictionary))
+            else {
+                return nil
+            }
+            return data
+        }
+
+        public var xml: String? {
+            guard !dictionary.keys.isEmpty,
+                  let data = try? PropertyListSerialization.data(
+                      fromPropertyList: dictionary,
+                      format: .xml,
+                      options: .zero
+                  ),
+                  let text = String(data: data, encoding: .utf8),
+                  !text.isEmpty
+            else {
+                return nil
+            }
+            return text
+        }
+
+        public func valueFor<T: Codable>(_ key: String) -> T? {
             (store.value as? [String: Any])?[key] as? T
         }
 

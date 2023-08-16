@@ -16,8 +16,13 @@ let package = Package(
     dependencies: [
     ],
     targets: [
-        .target(name: "AppleMobileDevice", dependencies: ["libimobiledevice.c", "AnyCodable"]),
+        .target(name: "AppleMobileDevice", dependencies: [
+            "libimobiledevice.c",
+            "libAppleMobileDeviceBackup",
+            "AnyCodable",
+        ]),
         .target(name: "AnyCodable"),
+        .target(name: "libAppleMobileDeviceBackup", dependencies: ["libimobiledevice.c"]),
         .binaryTarget(
             name: "libimobiledevice.c",
             url: "https://github.com/Lakr233/AppleMobileDevice/releases/download/1.0-6fc41f5/libimobiledevice.xcframework.zip",

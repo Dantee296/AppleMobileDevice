@@ -73,4 +73,80 @@ public extension AppleMobileDeviceManager {
         task(client)
         lockdownd_client_free(client)
     }
+
+    func requireLockdownService(
+        client: lockdownd_client_t,
+        serviceName: String,
+        requiresEscrowBag: Bool = false,
+        task: (lockdownd_service_descriptor_t?) -> Void
+    ) {
+        var service: lockdownd_service_descriptor_t?
+        if requiresEscrowBag {
+            guard lockdownd_start_service_with_escrow_bag(client, serviceName, &service) == LOCKDOWN_E_SUCCESS,
+                  let service
+            else {
+                task(nil)
+                return
+            }
+            task(service)
+            lockdownd_service_descriptor_free(service)
+        } else {
+            guard lockdownd_start_service(client, serviceName, &service) == LOCKDOWN_E_SUCCESS,
+                  let service
+            else {
+                task(nil)
+                return
+            }
+            task(service)
+            lockdownd_service_descriptor_free(service)
+        }
+    }
+
+    func requireAppleFileConduitService(
+        device: idevice_t,
+        appleFileConduitService: lockdownd_service_descriptor_t,
+        task: (afc_client_t?) -> Void
+    ) {
+        var client: afc_client_t?
+        guard afc_client_new(device, appleFileConduitService, &client) == AFC_E_SUCCESS,
+              let client
+        else {
+            task(nil)
+            return
+        }
+        task(client)
+        afc_client_free(client)
+    }
+
+    func requireMobileBackup2Service(
+        device: idevice_t,
+        mobileBackup2Service: lockdownd_service_descriptor_t,
+        task: (mobilebackup2_client_t?) -> Void
+    ) {
+        var client: mobilebackup2_client_t?
+        guard mobilebackup2_client_new(device, mobileBackup2Service, &client) == MOBILEBACKUP2_E_SUCCESS,
+              let client
+        else {
+            task(nil)
+            return
+        }
+        task(client)
+        mobilebackup2_client_free(client)
+    }
+
+    func requireInstallProxyService(
+        device: idevice_t,
+        name: String = UUID().uuidString,
+        task: (instproxy_client_t?) -> Void
+    ) {
+        var client: instproxy_client_t?
+        guard instproxy_client_start_service(device, &client, name) == INSTPROXY_E_SUCCESS,
+              let client
+        else {
+            task(nil)
+            return
+        }
+        task(client)
+        instproxy_client_free(client)
+    }
 }
