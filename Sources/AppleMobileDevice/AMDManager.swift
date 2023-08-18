@@ -1,5 +1,5 @@
 //
-//  AppleMobileDeviceManager.swift
+//  AMDManager.swift
 //
 //
 //  Created by QAQ on 2023/8/10.

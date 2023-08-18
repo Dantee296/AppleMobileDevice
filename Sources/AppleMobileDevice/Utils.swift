@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  Utils.swift
 //
 //
 //  Created by QAQ on 2023/8/15.
@@ -11,7 +11,7 @@ import libAppleMobileDevice
 
 public typealias AnyCodableDictionary = [String: AnyCodable]
 
-internal enum Utils {
+enum Utils {
     static func read_plist_to_binary_data(plist: plist_t?) -> Data? {
         guard let plist else { return nil }
         var buf: UnsafeMutablePointer<CChar>?
@@ -25,6 +25,6 @@ internal enum Utils {
     }
 }
 
-internal extension Result where Success == Void {
+extension Result where Success == Void {
     static func success() -> Self { .success(()) }
 }

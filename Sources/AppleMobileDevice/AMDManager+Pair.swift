@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  AMDManager+Pair.swift
 //
 //
 //  Created by QAQ on 2023/8/11.
