@@ -86,6 +86,8 @@ extension _AnyEncodable {
             try container.encode(string)
         case let data as Data:
             try container.encode(data)
+        case let date as Date:
+            try container.encode(date)
         #if canImport(Foundation)
             case let number as NSNumber:
                 try encode(nsnumber: number, into: &container)
@@ -173,6 +175,8 @@ extension AnyEncodable: Equatable {
         case let (lhs as String, rhs as String):
             return lhs == rhs
         case let (lhs as Data, rhs as Data):
+            return lhs == rhs
+        case let (lhs as Date, rhs as Date):
             return lhs == rhs
         case let (lhs as [String: AnyEncodable], rhs as [String: AnyEncodable]):
             return lhs == rhs
@@ -283,6 +287,8 @@ extension AnyEncodable: Hashable {
         case let value as String:
             hasher.combine(value)
         case let value as Data:
+            hasher.combine(value)
+        case let value as Date:
             hasher.combine(value)
         case let value as [String: AnyEncodable]:
             hasher.combine(value)

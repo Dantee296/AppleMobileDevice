@@ -58,6 +58,8 @@ extension AnyCodable: Equatable {
             return lhs == rhs
         case let (lhs as Data, rhs as Data):
             return lhs == rhs
+        case let (lhs as Date, rhs as Date):
+            return lhs == rhs
         case let (lhs as [String: AnyCodable], rhs as [String: AnyCodable]):
             return lhs == rhs
         case let (lhs as [AnyCodable], rhs as [AnyCodable]):
@@ -139,6 +141,8 @@ extension AnyCodable: Hashable {
         case let value as String:
             hasher.combine(value)
         case let value as Data:
+            hasher.combine(value)
+        case let value as Date:
             hasher.combine(value)
         case let value as [String: AnyCodable]:
             hasher.combine(value)

@@ -67,6 +67,8 @@ extension _AnyDecodable {
             self.init(string)
         } else if let data = try? container.decode(Data.self) {
             self.init(data)
+        } else if let date = try? container.decode(Date.self) {
+            self.init(date)
         } else if let array = try? container.decode([AnyDecodable].self) {
             self.init(array.map(\.value))
         } else if let dictionary = try? container.decode([String: AnyDecodable].self) {
@@ -113,6 +115,8 @@ extension AnyDecodable: Equatable {
         case let (lhs as String, rhs as String):
             return lhs == rhs
         case let (lhs as Data, rhs as Data):
+            return lhs == rhs
+        case let (lhs as Date, rhs as Date):
             return lhs == rhs
         case let (lhs as [String: AnyDecodable], rhs as [String: AnyDecodable]):
             return lhs == rhs
@@ -180,6 +184,8 @@ extension AnyDecodable: Hashable {
         case let value as String:
             hasher.combine(value)
         case let value as Data:
+            hasher.combine(value)
+        case let value as Date:
             hasher.combine(value)
         case let value as [String: AnyDecodable]:
             hasher.combine(value)
